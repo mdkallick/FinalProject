@@ -24,15 +24,22 @@ def buttonClicked(event):
 
 
 def goClicked(event):
+    global turn
     for label in range (0,len(lettlist)):
         last = lettlist[label - 1]
         check = lettlist[label]
         if check == last:
             list.pop(label)
         elif check == "W" and last == "B":
-            list.pop(label)
+            if turn == 0:
+                list.pop(label - 1)
+            elif turn == 1:
+                list.pop(label)
         elif check == "B" and last == "W":
-
+            if turn == 0:
+                list.pop(label - 1)
+            elif turn == 1:
+                list.pop(label)
     for label in range(0,len(lettlist)):
         button = Label(win, text=str(lettlist[label]))
         button.bind("<Button-1>", buttonClicked)
