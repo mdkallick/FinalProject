@@ -1,9 +1,17 @@
-from Tkinter import *
+from tkinter import *
 win = Tk()
 win.title('Boxcars')
-#import random, random.shuffle
+import random
 lettlist = ['W','O','B','O','W','O','B','O','W','O','B','O','W','O','B']
-turn = 0
+random.shuffle(lettlist)
+def check(event):
+   listcount = int(event.widget.cget("text")) #finds number of button and sets equal to a variable
+   if lettlist[listcount]=="W"and lettlist[listcount+1]=="B" or lettlist[listcount-1]=="B":
+       random.suffle(lettlist) #randomizes game setup
+turn = 0       
+#check(lettlist) this is not working yet
+
+
 
 
 def buttonClicked(event):
@@ -67,8 +75,6 @@ enter.bind("<Button-1>", goClicked)
 enter.grid(row=2, column=15) #tells Go! button to run goClicked (re/set game)
 
 
-#change letter buttons to labels
-#if statement to consolidate trains
 #if loop for randomized game
 #messagebox for left/right turn, error messages, game rules, etc.
 
