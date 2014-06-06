@@ -1,8 +1,8 @@
-from tkinter import *
+from Tkinter import *
 win = Tk()
 win.title('Boxcars')
 import random
-lettlist = ['W', 'O', 'B','O','W','O','B','O','W'] #,'O','B','O','W','O','B']
+lettlist = ['W', 'O', 'B','O','W','O','B','O','W','O','B','O','W','O','B']
 #random.shuffle(lettlist)
 blackWin = 0
 whiteWin = 0
