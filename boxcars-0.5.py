@@ -86,14 +86,14 @@ def goClicked(event):
    print(length)
 
    for label in range(0,length):
-      button = Label(win, text=str(lettlist[label]))
+      button = Label(win, text=str(lettlist[label]), width = 10)
       button.bind("<Button-1>", buttonClicked)
       letters.append(button)
       button.grid(row=1, column=label) #creates all lettered buttons
 
         
    for label in range(0,length):
-      button = Button(win, text=str(label))
+      button = Button(win, text=str(label), width = 10)
       button.bind("<Button-1>", buttonClicked)
       numbers.append(button)
       button.grid(row=2, column=label) #creates all numbered buttons
@@ -104,9 +104,18 @@ def goClicked(event):
    if blacktest == 0:
        blackWin = 1
        print ("Black Wins!")
+       blackwin = Label(win, text = "Black Wins!", width = 80, height = 30, font = ("Times New Roman", 25))
+       blackwin.grid(row = 2, column = int(len(lettlist)/2))
    if whitetest == 0:
        whiteWin = 1
        print ("White Wins!")
+       whitewin = Label(win, text = "White Wins!", width = 80, height = 30, font = ("Times New Roman", 25))
+       whitewin.grid(row = 2, column = int(len(lettlist)/2))
+   #Box for turn count:
+   tlist = ["White", "Black"]
+   player = tlist[turn]
+   whoseturn = Label(win, text = player)
+   whoseturn.grid(row = 3, column = int(len(lettlist)/2))
    
    
 
@@ -116,6 +125,22 @@ enter = Button(win, state = 'normal', text="GO!")
 enter.bind("<Button-1>", goClicked)
 enter.grid(row=2, column=15) #tells Go! button to run goClicked (re/set game)
 
+#Infobox:
+infolabels = []
+info = ["White (W) moves to the right, Black (B) moves to the left.", \
+        "Each turn, the player must select one of his pieces to move,", \
+        "which will then move one space in their respective directions.", \
+        "When a piece moves into a space next to a piece of the opposite color,", \
+        "that piece will be deleted from the game."]
+infocount = 3
+"""frame =  TK.Frame()
+frame.grid(row=3, column=int(len(lettlist)/2), columnspan=3, sticky='w')
+"""
+for label in range (0, len(info)):
+   button = Label(win, text = str(info[label]))
+   button.grid(row = (label) + 4, column = 0, columnspan = len(lettlist))
+   infocount = infocount + 1
+   infolabels.append(button)
 #messagebox for left/right turn, error messages, game rules, etc.
 
 
